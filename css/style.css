@@ -1,3 +1,11 @@
+*
+{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+  box-sizing:border-box;
+}
+
 body,
 div,
 ul,
@@ -12,6 +20,12 @@ h6 {
   padding:0;
   margin:0;
   font-family: "Roboto", sans-serif;
+}
+
+body{
+  width: 60%;
+  display:auto;
+  margin:0 20% ;
 }
 
 .clear-fix {
@@ -75,7 +89,7 @@ h5 {
   font-size: 14px;
   color: #999;
   line-height: 16px;
-  float: right;
+  margin-left: 40%;
 
 }
 
@@ -158,6 +172,7 @@ ul {
 
 img {
   padding: 10px;
+  width: 100px;
 }
 
 span {

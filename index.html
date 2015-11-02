@@ -4,22 +4,17 @@
 <head>
   <meta charset="utf-8">
   <title>Resume</title> 
-  <link href="css/style.css" rel="stylesheet">  
+  <link href="css/style.css" rel="stylesheet">
 
-  <script src="js/jQuery.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<!--  <script src="js/jQuery.js"></script> -->
   <script src="js/helper.js"></script>
-
-  <!--
-  Uncomment the <script> tag below when you're ready to add an interactive
-  Google Map to your resume!
-  -->
-<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
-
-  <meta name="viewport" content="width=device-width">
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+ <meta name="viewport" content="width=device-width">
 </head>
+
 <body>
   <div id="main">
-    
     <div id="header" class="center-content clear-fix">
       <ul id="topContacts" class="flex-box"></ul>
     </div>
@@ -43,12 +38,7 @@
     </div>
   </div>
 
-  <!--
-  The next line tells the browser where to download the JavaScript file you'll be
-  writing. In resumeBuilder.js, you'll be writing code that builds the resume
-  dynamically when this website, index.html, is opened.
-  -->
-  <script src="js/resumeBuilder.js"></script>
+   <script src="js/resumeBuilder.js"></script>
 
   <script type="text/javascript">
 
@@ -65,14 +55,17 @@
         document.getElementById('projects').style.backgroundColor= "#00ff00";
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
-        document.getElementById('education').style.backgroundColor = "black"
+        document.getElementById('education').style.backgroundColor = "black";
     }
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('lets-connect').style.display = 'none';
     }
+<!--
     if(document.getElementById('map') === null) {
       document.getElementById('mapDiv').style.display = 'none';
     }
-  </script>
+-->
+</script>
+
 </body>
 </html>
