@@ -1,7 +1,7 @@
 // fill generic stats variables & create objects
 
 var myName = "Ioannis Roussos";
-var myRole = "Web Developer";
+var myRole = "Software Engineer";
 var myEmail ="gn.roussos@gmail.com";
 var myPicUrl = "http://angelxp.be/profil/2013/Minion09.jpg";
 var myMessage = "Welcome to my resume! <br> <br> <br>";
@@ -10,62 +10,39 @@ var mySkills = ["C++","Web", "Graphics","DirectX","Databases"];
 var bio = {
     "name": myName,
     "role": myRole,
-    "picUrl": myPicUrl,
+    "biopic": myPicUrl,
     "welcomeMessage": myMessage,
     "skills": mySkills,
     "contacts": {
         "mobile": "650-339-6232",
         "email": myEmail,
-        "github": " ",
+        "github": "http://github.com/gnroussos",
         "location": "Bay Area, CA",
         "twiter":""
     }
 };
 bio.display=function()
 {
-    var formattedName = HTMLheaderName.replace("%data%", myName);
-    var formattedRole = HTMLheaderRole.replace("%data%", myRole);
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
-    var formattedPic = HTMLbioPic.replace("%data%", myPicUrl);
-    var formattedMsg = HTMLwelcomeMsg.replace("%data%", myMessage);
+    var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
+    var formattedMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
     var formattedLoc = HTMLlocation.replace("%data%", bio.contacts.location);
 
     var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-//    var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);
+    var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);
 
     $("#header").append(formattedMsg);
-    $("#topContacts").prepend(formattedLoc + formattedEmail + formattedMobile);
+    $("#topContacts").prepend(formattedLoc + formattedEmail + formattedMobile + formattedGit);
     $("#footerContacts").append(formattedLoc + formattedEmail + formattedMobile);
     $("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
     $("#header").prepend(formattedPic);
 
-}
-
-var work = {
-    "jobs": [
-        {
-            "employer" : "Chamber of Commerce",
-            "title": "System Analyst",
-            "location": "Greece",
-            "dates": "2010-2011",
-            "description":" Planned and implemented all software & hardware upgrades, & participated in design processes, assisted with testing and troubleshot bugs "
-            },
-        {
-            "employer" : "TaT Logistics",
-            "title": "IT Administrator",
-            "location": "IL, Usa",
-            "dates": "2014-2014",
-            "description":"Set up network & email servers on Windows & provided technical support"
-        }
-    ]
-};
-work.display=function()
-{
-    if (bio.skills.length > 0)
-    {
+    if (bio.skills.length > 0) {
         $("#header").append(HTMLskillsStart);
         var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
         $("#skills").append(formattedSkill);
@@ -78,15 +55,35 @@ work.display=function()
         formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
         $("#skills").append(formattedSkill);
     }
+}
 
-    for(var j in work.jobs)
+var work = {
+    "jobs": [
+        {
+            "employer" : "TaT Logistics",
+            "title": "IT Administrator",
+            "location": "IL, Usa",
+            "dates": "2014-2014",
+            "description":"Set up network & email servers on Windows & provided technical support"
+        },
+        {
+            "employer" : "Chamber of Commerce",
+            "title": "System Analyst",
+            "location": "Greece",
+            "dates": "2010-2011",
+            "description":" Planned and implemented all software & hardware upgrades, & participated in design processes, assisted with testing and troubleshot bugs"
+            }        
+    ]
+};
+work.display=function()
+{
+    for (var j in work.jobs)
     {
         $("#workExperience").append(HTMLworkStart);
 
         var fwe = HTMLworkEmployer.replace("%data%",work.jobs[j].employer);
         var fwt = HTMLworkTitle.replace("%data%", work.jobs[j].title);
         $(".work-entry:last").append(fwe + fwt);
-
         var temp = HTMLworkDates.replace("%data%", work.jobs[j].dates);
         $(".work-entry:last").append(temp);
         temp  = HTMLworkLocation.replace("%data%", work.jobs[j].location);
@@ -100,15 +97,15 @@ work.display=function()
 var projects = {
     "project": [
         {
-            "title": "Web developer",
+            "title":"Front-end Web Developer",
             "dates": "2015",
             "description": "Udacity nanodegree",
             "images":["http://cameronwp.github.io/cpcom/static/udacity_logo.svg"]
         },
         {
-            "title": " Software developer",
+            "title": "Developing Windows 10 Universal Apps",
             "dates": "2015",
-            "description": "Windows 10 game",
+            "description": "edX Microsoft",
             "images":["https://assets.onestore.ms/cdnfiles/onestorerolling-1510-27008/shell/v3/images/logo/microsoft.png"]
         }
     ]
@@ -119,7 +116,8 @@ projects.display = function()
     for (var p in projects.project) {
         $("#projects").append(HTMLprojectStart);
 
-        var temp = HTMLprojectTitle.replace("%data%", projects.project[p].title);
+        var temp = HTMLprojectTitle.replace("%url%", "http://gnroussos.github.io/index.html");
+        temp = temp.replace("%data%", projects.project[p].title);
         $(".project-entry:last").append(temp);
         temp = HTMLprojectDates.replace("%data%", projects.project[p].dates);
         $(".project-entry:last").append(temp);
@@ -153,14 +151,15 @@ var education = {
      }
     ],
     "onlinecourses":[
-        {
-            "title": "Web Developer",
-            "school": "Udacity",
-            "dates": 2015,
-            "url": "http://www.udacity.com"
-        }
+    {
+        "title": "Front-end Web Developer",
+        "school": "Udacity",
+        "date": 2015,
+        "url": "http://www.udacity.com"
+    }
     ]     
 };
+
 education.display = function()
 {
     for (var e in education.schools) {
@@ -189,37 +188,20 @@ education.display = function()
         $(".education-entry:last").append(temp);
         temp = HTMLonlineSchool.replace("%data%", education.onlinecourses[oc].school);
         $(".education-entry:last").append(temp);
-        temp = HTMLonlineDates.replace("%data%", education.onlinecourses[oc].dates);
+        temp = HTMLonlineDates.replace("%data%", education.onlinecourses[oc].date);
         $(".education-entry:last").append(temp);
         temp = HTMLonlineURL.replace("%data%", education.onlinecourses[oc].url);
         temp = temp.replace("%url%",education.onlinecourses[oc].url);
         $(".education-entry:last").append(temp);
     }
-
 }
-//replace values in html
 
+//replace values in html
 bio.display();
 work.display();
 projects.display();
 education.display();
 
-
-
 $("#mapdiv").append(googleMap);
-
-
-//TEST functions during classes
-/*
-function locationizer(work_obj) {
-    var arrayloc = [];
-    for(var w in work_obj.jobs){
-        arrayloc.push(work_obj.jobs[w].location);
-    }
-
-    return arrayloc;
-}
-*/
-
 
 //$("#main").append(internationalizeButton);
